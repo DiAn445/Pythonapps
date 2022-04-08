@@ -18,7 +18,7 @@ from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.dispatcher import FSMContext
 
 storage = MemoryStorage()
-bot = Bot(token='5172128174:AAEqCX6SfE-HHERZ7wH0Emls5oAvqTepQts', parse_mode=types.ParseMode.HTML)
+bot = Bot(token='', parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot, storage=storage)
 
 data = {'make': 'Nokia'}

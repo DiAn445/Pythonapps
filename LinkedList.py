@@ -21,7 +21,7 @@ class Stack:
         self.top = None
         self.bot = None
 
-    def push(self, obj: StackObj):
+    def push_back(self, obj: StackObj):
         if self.top is None:
             self.top = obj
             return
@@ -33,6 +33,14 @@ class Stack:
                 cur_node.set_next(self.bot)
                 return result
             cur_node = cur_node.get_next()
+
+    def push_front(self, obj: StackObj):
+        if self.top is None:
+            self.top = obj
+            return
+        first_node = obj
+        first_node.set_next(self.top)
+        self.top = first_node
 
     def pop(self):
         if self.top is None:
@@ -47,7 +55,7 @@ class Stack:
             cur_node = cur_node.get_next()
 
     def __add__(self, other):
-        self.push(other)
+        self.push_back(other)
         return self
 
     def __iadd__(self, other):
@@ -55,7 +63,7 @@ class Stack:
 
     def __mul__(self, other):
         for i in other:
-            self.push(StackObj(i))
+            self.push_back(StackObj(i))
         return self
 
     def __imul__(self, other):
@@ -100,14 +108,11 @@ class Stack:
             prev.get_next().set_next(jump_over)
 
 
-
-
-
-
 st = Stack()
-st.push(StackObj("obj11"))
-st.push(StackObj("obj12"))
-st.push(StackObj("obj13"))
-st[0] = StackObj("obj2-new")
+st.push_back(StackObj("obj11"))
+st.push_back(StackObj("obj12"))
+st.push_back(StackObj("obj13"))
+st[1] = StackObj("obj2-new")
+st.push_front(StackObj("must_be_1st"))
 for i in range(0, len(st)):
     print(st[i].get_data())

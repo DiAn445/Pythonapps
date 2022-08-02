@@ -1,5 +1,5 @@
 import random
-
+from time import ctime
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.types import message
@@ -14,11 +14,11 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 logging.basicConfig(level=logging.INFO)
 
 storage = MemoryStorage()
-bot = Bot(token='', parse_mode=types.ParseMode.HTML)
+bot = Bot(token='5172128174:AAEqCX6SfE-HHERZ7wH0Emls5oAvqTepQts', parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot, storage=storage)
 
-data = {'make': 'Nokia'}
 
+data = {}
 
 @dp.inline_handler()
 async def inline_handler(query: types.InlineQuery):
@@ -51,6 +51,7 @@ async def inline_handler(query: types.InlineQuery):
         input_message_content=types.InputTextMessageContent(
             message_text=link, parse_mode=types.ParseMode.HTML))]
     await query.answer(articles, cache_time=1, is_personal=True)
+
 
 
 executor.start_polling(dp, skip_updates=True)

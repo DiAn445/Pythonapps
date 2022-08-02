@@ -7,15 +7,11 @@ from aiogram.utils import executor
 from random import randint
 import os, hashlib
 import logging
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
-from telebot.types import User
+
 
 logging.basicConfig(level=logging.INFO)
-
-import asyncio
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from aiogram.dispatcher.filters.state import StatesGroup, State
-from aiogram.dispatcher import FSMContext
 
 storage = MemoryStorage()
 bot = Bot(token='', parse_mode=types.ParseMode.HTML)
@@ -35,16 +31,16 @@ async def inline_handler(query: types.InlineQuery):
         if ran <= 5:
             link = f'<i>Your dick size for today is:</i> <b>{ran}cm</b> 🤡'
             data[f'{name}'] = link
-        elif ran > 5 and ran <= 15:
+        elif 5 < ran <= 15:
             link = f'<i>Your dick size for today is:</i> <b>{ran}cm</b> 🤫'
             data[f'{name}'] = link
-        elif ran > 15 and ran <= 25:
+        elif 15 < ran <= 25:
             link = f'<i>Your dick size for today is:</i> <b>{ran}cm</b> 💪'
             data[f'{name}'] = link
-        elif ran > 25 and ran <= 35:
+        elif 25 < ran <= 35:
             link = f'<i>Your dick size for today is:</i> <b>{ran}cm</b> 😎'
             data[f'{name}'] = link
-        elif ran > 35 and ran <= 40:
+        elif 35 < ran <= 40:
             link = f'<i>Your dick size for today is:</i> <b>{ran}cm</b> 😍'
             data[f'{name}'] = link
     result_id: random.randint(1, 5) = hashlib.md5(text.encode()).hexdigest()
@@ -57,4 +53,4 @@ async def inline_handler(query: types.InlineQuery):
     await query.answer(articles, cache_time=1, is_personal=True)
 
 
-executor.start_polling(dp, skip_updates=True, )
+executor.start_polling(dp, skip_updates=True)

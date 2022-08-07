@@ -1,18 +1,16 @@
-import random
 from time import ctime, sleep
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.types import message
 from aiogram.utils import executor
 from random import randint
-import os, hashlib
-import logging
+import os, hashlib, logging
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 logging.basicConfig(level=logging.INFO)
 
 storage = MemoryStorage()
-bot = Bot(token='', parse_mode=types.ParseMode.HTML)
+bot = Bot(token='5172128174:AAEqCX6SfE-HHERZ7wH0Emls5oAvqTepQts', parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot, storage=storage)
 
 

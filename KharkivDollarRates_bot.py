@@ -20,7 +20,6 @@ bs = BeautifulSoup(url, 'html.parser')
 
 
 class DB:
-    data = {}
     @classmethod
     def show_rates(cls):
         result = []

@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 logging.basicConfig(level=logging.INFO)
 
 storage = MemoryStorage()
-bot = Bot(token='', parse_mode=types.ParseMode.HTML)
+bot = Bot(token='5172128174:AAEqCX6SfE-HHERZ7wH0Emls5oAvqTepQts', parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot, storage=storage)
 
 url = urlopen("https://finance.i.ua/market/harkov/usd/?").read().decode('utf-8')
@@ -24,11 +24,10 @@ class DB:
     @classmethod
     def show_rates(cls):
         result = []
-        for div in bs.find_all('div', {"class": "widget widget-cash"}):
-            for i in bs.find(lambda tag: tag.name == 'table'):
-                for j in i.find_all_next('tbody'):
-                    for tr in j.find_all_next('tr'):
-                        result.append(tr)
+        for i in bs.find(lambda tag: tag.name == 'table'):
+            for j in i.find_all_next('tbody'):
+                for tr in j.find_all_next('tr'):
+                    result.append(tr)
         str_list = []
         for i in result:
             str_list.append(

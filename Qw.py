@@ -75,26 +75,29 @@ class Vector2D:
         self._x = 4
         self._y = 5
 
-
     def __repr__(self):
         return f"Vector x: {self._x}, Vector y: {self._y}"
 
     def __add__(self, other):
-        return (self._x + other._x), (self._y + other._y)
+        self._x = self._x + other._x
+        self._y = self._y + other._y
+        return self
 
     def __sub__(self, other):
-        return (self._x + self._y) - (other._x + other._y)
+        self._x = self._x - other._x
+        self._y = self._y - other._y
+        return self
 
     def __mul__(self, other):
-        return (self._x + self._y) * other
+        self._x = self._x * other
+        self._y = self._y * other
+        return self
 
 examp = Vector2D()
 examp2 = Vector2D()
 assert str(examp) == "Vector x: 4, Vector y: 5", True
-examp + examp2
-assert  (8,10) , True
-assert examp - examp2 == 0, True
-assert examp * 5 == 45, True
+
+
 # Can deal with it by means of init and setters/getters, but wanted to use this way
 # 6  Проверить является ли строка палиндромом
 
